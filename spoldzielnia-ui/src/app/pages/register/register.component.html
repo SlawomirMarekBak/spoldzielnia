@@ -1,0 +1,214 @@
+<div class="header bg-gradient-danger py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+          <h1 class="text-white">Welcome!</h1>
+          <p class="text-lead text-light">
+            Use these awesome forms to login or create new account in your
+            project for free.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg
+      x="0"
+      y="0"
+      viewBox="0 0 2560 100"
+      preserveAspectRatio="none"
+      version="1.1"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-body px-lg-5 py-lg-5">
+          <div class="text-center text-muted mb-4">
+            <small>Zarejestruj się w systemie</small>
+          </div>
+          <form
+            role="form"
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+          >
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ni ni-hat-3"></i>
+                  </span>
+                </div>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="displayName"
+                  [(ngModel)]="form.displayName"
+                  required
+                  minlength="3"
+                  maxlength="20"
+                  #displayName="ngModel"
+                />
+                <div
+                  class="alert-danger"
+                  *ngIf="f.submitted && displayName.invalid"
+                >
+                  <div *ngIf="displayName.errors.required">
+                    Nazwa użytkownika jest wymagana
+                  </div>
+                  <div *ngIf="displayName.errors.minlength">
+                    Nazwa użytkownika musi mieć przynajmniej 3 znaki
+                  </div>
+                  <div *ngIf="displayName.errors.maxlength">
+                    Nazwa użytkownika nie może być dłuższa niż 20 znaków
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ni ni-email-83"></i>
+                  </span>
+                </div>
+                <input
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  [(ngModel)]="form.email"
+                  required
+                  email
+                  #email="ngModel"
+                />
+                <div class="alert-danger" *ngIf="f.submitted && email.invalid">
+                  <div *ngIf="email.errors.required">
+                    Adres email jest wymagany
+                  </div>
+                  <div *ngIf="email.errors.email">
+                    Email musi być prawidłowy
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ni ni-lock-circle-open"></i>
+                  </span>
+                </div>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  [(ngModel)]="form.password"
+                  required
+                  minlength="6"
+                  #password="ngModel"
+                />
+                <div
+                  class="alert-danger"
+                  *ngIf="f.submitted && password.invalid"
+                >
+                  <div *ngIf="password.errors.required">
+                    Hasło jest wymagane
+                  </div>
+                  <div *ngIf="password.errors.minlength">
+                    Hasło musi mieć przynajmniej 6 znaków
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="input-group input-group-alternative">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="ni ni-lock-circle-open"></i>
+                  </span>
+                </div>
+                <input
+                  type="password"
+                  class="form-control"
+                  name="matchingPassword"
+                  [(ngModel)]="form.matchingPassword"
+                  required
+                  minlength="6"
+                  #password="ngModel"
+                />
+                <div
+                  class="alert-danger"
+                  *ngIf="f.submitted && matchingPassword.invalid"
+                >
+                  <div *ngIf="matchingPassword.errors.required">
+                    Powtórzone hasło jest wymagane
+                  </div>
+                  <div *ngIf="matchingPassword.errors.minlength">
+                    Powtórzone hasło musi mieć przynajmniej 6 znaków
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-muted font-italic">
+              <small>
+                Siła hasła:
+                <span class="text-success font-weight-700">wysoka</span>
+              </small>
+            </div>
+            <div class="row my-4">
+              <div class="col-12">
+                <div
+                  class="custom-control custom-control-alternative custom-checkbox"
+                >
+                  <input
+                    class="custom-control-input"
+                    id="customCheckRegister"
+                    type="checkbox"
+                  />
+                  <label class="custom-control-label" for="customCheckRegister">
+                    <span class="text-muted">
+                      Akceptuję warunki konta
+                      <a href="#!">Warunki</a>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="form-group text-center">
+                <button class="btn btn-primary mt-4">Zarejestruj</button>
+              </div>
+            </div>
+            <div
+              class="alert alert-warning"
+              *ngIf="f.submitted && isSignUpFailed"
+            >
+              Nie udało się zarejestrować!
+              <br />
+              {{ errorMessage }}
+            </div>
+          </form>
+          <div class="text-center" *ngIf="isSuccessful">
+            <div class="alert alert-success">
+              Konto zostało założone! Przejdź do logowania
+            </div>
+            <div class="form-group text-center">
+              <a href="/login" class="btn btn-primary my-4">Logowanie</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
