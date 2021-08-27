@@ -97,9 +97,16 @@
   <div class="row">
     <div class="col">
       <div class="card shadow">
-        <div class="card-header border-0">
-          <h3 class="mb-0">Lokale</h3>
+          <div class="card-header bg-white border-0">
+        <div class="row align-items-center">
+          <div class="card-header border-0">
+            <h3 class="mb-0">Lokale</h3>
+          </div>
+          <div class="col-11 text-right">
+            <a href="/tables/new" class="btn btn-sm btn-primary">Dodaj</a>
+          </div>
         </div>
+          </div>
         <div class="table-responsive">
           <table class="table align-items-center table-flush">
             <thead class="thead-light">
@@ -124,7 +131,7 @@
                   </div>
                 </th>
                 <td>
-                  {{apartment.city}}
+                  {{apartment.zipCode}}
                 </td>
                 <td>
                   {{apartment.streetName}}

@@ -24,7 +24,15 @@ public class ApartmentServiceImpl {
     return apartmentRepository.findAll();
   }
 
-  public void addApartment(Apartment apartment) {
-    apartmentRepository.save(apartment);
+  public Apartment getById(Long id) {
+    return apartmentRepository.findById(id).get();
+  }
+
+  public Apartment add(Apartment apartment) {
+    return apartmentRepository.save(apartment);
+  }
+
+  public Apartment update(Apartment apartment) {
+    return apartmentRepository.save(apartment);
   }
 }

@@ -1,0 +1,161 @@
+<div
+  class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+  style="min-height: 600px; background-size: cover; background-position: center top;"
+>
+  <!-- Mask -->
+  <span class="mask bg-gradient-danger opacity-8"></span>
+  <!-- Header container -->
+</div>
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col-xl-8 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <form [formGroup]="apartmentForm" (ngSubmit)="onSubmit()">
+          <div class="card-header bg-white border-0">
+            <div class="row align-items-center">
+              <div class="col-8">
+                <h3 class="mb-0">Lokal</h3>
+              </div>
+              <div class="col-4 text-right">
+                <button
+                  type="button"
+                  (click)="onCancel()"
+                  class="btn btn-sm btn-info"
+                >
+                  Anuluj
+                </button>
+                <button
+                  *ngIf="isNew || isEdit"
+                  type="button"
+                  (click)="onSave()"
+                  class="btn btn-sm btn-success"
+                >
+                  Zapisz
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h6 class="heading-small text-muted mb-4">Adres</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-city">
+                      Miasto
+                    </label>
+                    <input
+                      minlength="4"
+                      maxlength="250"
+                      [readonly]="isView"
+                      placeholder="Miasto"
+                      formControlName="city"
+                      class="form-control form-control-alternative"
+                    />
+                    <div
+                      *ngIf="
+                        cityCtr.invalid && (cityCtr.dirty || cityCtr.touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="cityCtr.errors.required">
+                        Name is required.
+                      </div>
+                      <div *ngIf="cityCtr.errors.minlength">
+                        Year must be at least 3 characters long.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-zip-code">
+                      Kod pocztowy
+                    </label>
+                    <input
+                      minlength="5"
+                      maxlength="250"
+                      [readonly]="isView"
+                      placeholder="Kod pocztowy"
+                      formControlName="zipCode"
+                      class="form-control form-control-alternative"
+                    />
+                    <div
+                      *ngIf="
+                        zipCodeCtr.invalid &&
+                        (zipCodeCtr.dirty || zipCodeCtr.touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="zipCodeCtr.errors.required">
+                        Kod pocztowy jest wymagana.
+                      </div>
+                      <div *ngIf="zipCodeCtr.errors.minlength">
+                        Kod pocztowy musi mieć minimum 5 znaki.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-street-name">
+                      Ulica
+                    </label>
+                    <input
+                      minlength="4"
+                      maxlength="250"
+                      [readonly]="isView"
+                      placeholder="Ulica"
+                      formControlName="streetName"
+                      class="form-control form-control-alternative"
+                    />
+                    <div
+                      *ngIf="
+                        streetNameCtr.invalid &&
+                        (streetNameCtr.dirty || streetNameCtr.touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="streetNameCtr.errors.required">
+                        Ulica jest wymagana.
+                      </div>
+                      <div *ngIf="streetNameCtr.errors.minlength">
+                        Ulica musi mieć minimum 3 znaki.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-street-number">
+                      Numer
+                    </label>
+                    <input
+                      [readonly]="isView"
+                      placeholder="Numer"
+                      formControlName="streetNumber"
+                      class="form-control form-control-alternative"
+                    />
+                    <div
+                      *ngIf="
+                        streetNumberCtr.invalid &&
+                        (streetNumberCtr.dirty || streetNumberCtr.touched)
+                      "
+                      class="alert alert-danger"
+                    >
+                      <div *ngIf="streetNumberCtr.errors.required">
+                        Numer jest wymagany.
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

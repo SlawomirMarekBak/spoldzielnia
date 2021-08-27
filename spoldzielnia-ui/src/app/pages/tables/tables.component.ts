@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Apartment } from './../../model/apartment';
@@ -9,7 +9,7 @@ import { ApartmentService } from './../../service/apartment.service';
   templateUrl: './tables.component.html',
   styleUrls: ['./tables.component.scss'],
 })
-export class TablesComponent implements OnInit {
+export class TablesComponent implements OnInit, OnDestroy {
   apartments: Apartment[] = new Array<Apartment>();
   subscription: Subscription;
 
@@ -22,10 +22,16 @@ export class TablesComponent implements OnInit {
   ngOnInit() {
     this.subscription = this.apartmentService.apartmentChanges.subscribe(
       (apartments) => {
+        console.log(apartments);
         this.loadToSource(apartments);
       }
     );
     this.refreshApartments();
+  }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 
   refreshApartments() {
@@ -38,13 +44,12 @@ export class TablesComponent implements OnInit {
 
   onView(id: number) {
     console.log('onView');
-    this.router.navigate([id + '/view'], {
-      relativeTo: this.route,
-    });
+    this.router.navigate([id + '/view'], { relativeTo: this.route });
   }
 
   onEdit(id: number) {
     console.log('onEdit');
+    this.router.navigate([id + '/edit'], { relativeTo: this.route });
   }
 
   onDelete(id: number) {

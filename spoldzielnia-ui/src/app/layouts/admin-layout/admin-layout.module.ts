@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ClipboardModule } from 'ngx-clipboard';
@@ -10,7 +10,7 @@ import { IconsComponent } from '../../pages/icons/icons.component';
 import { MapsComponent } from '../../pages/maps/maps.component';
 import { TablesComponent } from '../../pages/tables/tables.component';
 import { UserProfileComponent } from '../../pages/user-profile/user-profile.component';
-import { ApartamentComponent } from './../../pages/apartament/apartament.component';
+import { ApartmentComponent } from './../../pages/apartment/apartment.component';
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
 // import { ToastrModule } from 'ngx-toastr';
@@ -23,11 +23,12 @@ import { AdminLayoutRoutes } from './admin-layout.routing';
     HttpClientModule,
     NgbModule,
     ClipboardModule,
+    ReactiveFormsModule,
   ],
   declarations: [
     DashboardComponent,
     UserProfileComponent,
-    ApartamentComponent,
+    ApartmentComponent,
     TablesComponent,
     IconsComponent,
     MapsComponent,

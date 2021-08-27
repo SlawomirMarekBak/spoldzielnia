@@ -43,7 +43,9 @@ export class ApartmentService {
     return this.httpClient.get<Apartment>(this.apiURL + '/' + id);
   }
 
-  public addApartment(apartment: Apartment) {
+  public addApartment(apartment: Apartment, test: String) {
+    console.log(apartment);
+    console.log(test);
     const options = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
@@ -51,7 +53,7 @@ export class ApartmentService {
       }),
     };
     this.httpClient
-      .post<Apartment>(this.apiURL + '/add', Apartment, options)
+      .post<Apartment>(this.apiURL + '/add', apartment, options)
       .pipe(catchError(this.handleError))
       .subscribe((value) => {
         this.apartmentChanges.next(this.getApartments());
@@ -66,7 +68,7 @@ export class ApartmentService {
       }),
     };
     this.httpClient
-      .put<Apartment>(this.apiURL + '/update', Apartment, options)
+      .put<Apartment>(this.apiURL + '/update', apartment, options)
       .pipe(catchError(this.handleError))
       .subscribe((value) => {
         this.apartmentChanges.next(this.getApartments());

@@ -1,0 +1,1 @@
+java -Xdebug -Xrunjdwp:server=y,transport=dt_socket,address=9999,suspend=n -Dserver.port=8080 -jar .\target\spoldzielnia-service-0.0.1.jar --spring.profiles.active=dev
